@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index',compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('admin.users.create',compact('user'));
+        return view('admin.users.create', compact('user'));
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         User::create($request->except('confirm_password'));
-        return redirect()->route('users.index')->with('success',true);
+        return redirect()->route('users.index')->with('success', true);
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.users.show',compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -65,7 +65,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit',compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -75,7 +75,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request,User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
         if($request->password){
             $user->update($request->all());
@@ -83,7 +83,7 @@ class UserController extends Controller
         }else{
             $user->update($request->except('password'));
         }
-        return redirect()->route('users.index')->with('success',true);
+        return redirect()->route('users.index')->with('success', true);
     }
 
     /**
@@ -95,6 +95,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success',true);
+        return redirect()->route('users.index')->with('success', true);
     }
 }
