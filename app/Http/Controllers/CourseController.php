@@ -14,7 +14,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('admin.courses.index', compact('courses'));
     }
 
     /**
@@ -24,7 +25,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $course = new Course();
+        return view('admin.courses.create', compact('course'));
     }
 
     /**
@@ -35,7 +37,8 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Course::create($request->except('confirm_password'));
+        return redirect()->route('courses.index')->with('success', true);
     }
 
     /**
@@ -46,7 +49,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('admin.courses.show',compact('course'));
     }
 
     /**
@@ -57,7 +60,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('admin.courses.edit', compact('course'));
     }
 
     /**
@@ -69,7 +72,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        if($request->password){
+            $course->update($request->all());
+
+        }else{
+            $course->update($request->except('password'));
+        }
+        return redirect()->route('courses.index')->with('success', true);
     }
 
     /**
@@ -80,6 +89,7 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect()->route('courses.index')->with('success', true);
     }
 }
