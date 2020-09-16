@@ -10,7 +10,7 @@
 				<img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">Usuário</a>
+				<a href="#" class="d-block">{{ $user->name }}</a>
 			</div>
 			<div class="info align-self-center">
 				<form id="logout-form" method="post" action="{{ route('logout') }}">
@@ -36,6 +36,28 @@
 							<i class="nav-icon fas fa-users"></i>
 							<p>
 								Usuários
+							</p>
+						</a>
+					</li>
+				@endcan
+				@can('viewAny', App\Category::class)
+				<li class="nav-item has-treeview ">
+					<a href="{{ route('categories.index') }}"
+						class="nav-link {{ Route::is('categories.index') ? 'active' : '' }}">
+						<i class="nav-icon fas fa-folder-open"></i>
+						<p>
+							Categórias
+						</p>
+					</a>
+				</li>
+				@endcan
+				@can('viewAny', App\Course::class)
+					<li class="nav-item has-treeview ">
+						<a href="{{ route('courses.index') }}"
+							class="nav-link {{ Route::is('courses.index') ? 'active' : '' }}">
+							<i class="nav-icon fas fa-book-reader"></i>
+							<p>
+								Cursos
 							</p>
 						</a>
 					</li>
