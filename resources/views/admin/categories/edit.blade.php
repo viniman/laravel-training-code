@@ -2,10 +2,10 @@
 
 @section('content')
     @component('admin.components.edit')
-        @slot('title', 'Editar ' . $user->name)
-        @slot('url', route('users.update', $user->id))
+        @slot('title', 'Editar ' . $category->name)
+        @slot('url', route('categories.update', $category->id))
         @slot('form')
-            @include('admin.users.form')
+            @include('admin.categories.form')
         @endslot
     @endcomponent
 @endsection

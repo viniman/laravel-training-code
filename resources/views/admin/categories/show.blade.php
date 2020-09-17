@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('content')
     @component('admin.components.show')
-        @slot('title', $user->name)
+        @slot('title', $category->name)
         @slot('form')
-            @include('admin.users.form', ['show' => true])
+            @include('admin.categories.form', ['show' => true])
         @endslot
     @endcomponent
 @endsection

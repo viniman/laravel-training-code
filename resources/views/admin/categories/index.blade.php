@@ -2,7 +2,7 @@
 
 @section('content')
     @component('admin.components.table')
-        @slot('title', 'Listagem')
+        @slot('title', 'Listagem de Categorias')
         @slot('create', route('categories.create'))
         @slot('head')
             <th>Nome</th>
@@ -15,13 +15,13 @@
                         <td>{{ $category->name }}</td>
                         <td class="options"> 
                             @can('update', $category)
-                                <a href="{{ route('users.edit', $category->id ) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('categories.edit', $category->id ) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
                             @endcan
                             @can('view', $category)
-                                <a href="{{ route('users.show', $category->id ) }}" class="btn btn-dark"><i class="fas fa-search"></i></a>
+                                <a href="{{ route('categories.show', $category->id ) }}" class="btn btn-dark"><i class="fas fa-search"></i></a>
                             @endcan
                             @can('delete', $category)
-                                <form action="{{ route('users.destroy', $category->id) }}" class="form-delete" method="post">
+                                <form action="{{ route('categories.destroy', $category->id) }}" class="form-delete" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
