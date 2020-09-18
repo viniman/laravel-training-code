@@ -17,10 +17,11 @@ Auth::routes();
 Route::middleware('auth')->group(function(){
     Route::get('/', function () {
         return view('admin.layouts.app');
-        
+
     })->name('dashboard');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/users','UserController');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/courses', 'CategoryController');
+    Route::put('/courses/subscription/{course}', 'CourseController@subscription')->name('courses.subscription');
 });

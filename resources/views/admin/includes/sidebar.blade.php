@@ -40,7 +40,7 @@
 						</a>
 					</li>
 				@endcan
-				@can('viewAny', App\Category::class)
+				@can('viewAny', App\User::class)
 				<li class="nav-item has-treeview ">
 					<a href="{{ route('categories.index') }}"
 						class="nav-link {{ Route::is('categories.index') ? 'active' : '' }}">
@@ -51,7 +51,7 @@
 					</a>
 				</li>
 				@endcan
-				@can('viewAny', App\Course::class)
+				@can('viewAny', App\User::class)
 					<li class="nav-item has-treeview ">
 						<a href="{{ route('courses.index') }}"
 							class="nav-link {{ Route::is('courses.index') ? 'active' : '' }}">
