@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -35,7 +36,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         Category::create($request->except('confirm_password'));
         return redirect()->route('categories.index')->with('success', true);
@@ -70,7 +71,7 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         if($request->password){
             $category->update($request->all());
@@ -78,7 +79,7 @@ class CategoryController extends Controller
         }else{
             $category->update($request->except('password'));
         }
-        return redirect()->route('categories.index')->with('success',true);
+        return redirect()->route('categories.index')->with('success', true);
     }
 
     /**
