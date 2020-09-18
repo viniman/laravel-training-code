@@ -37,14 +37,3 @@
         @endif
     @endif
 </div>
-
-@push('scripts')
-    <script>
-        $(function(){
-            $('.select2').select2();
-        })
-        $('select[value]').each(function(){
-            $(this).val($(this).attr('value'));
-        })
-    </script>
-@endpush
