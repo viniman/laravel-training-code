@@ -10,7 +10,7 @@
 				<img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">{{ $user->name }}</a>
+				<a href="#" class="d-block">{{ $user->name ?? 'User' }}</a>
 			</div>
 			<div class="info align-self-center">
 				<form id="logout-form" method="post" action="{{ route('logout') }}">
