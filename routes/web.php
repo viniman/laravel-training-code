@@ -25,5 +25,5 @@ Route::middleware('auth')->group(function(){
     Route::resource('/users','UserController');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/courses', 'CourseController');
-    //Route::put('/courses/subscription/{course}', 'CourseController@subscription')->name('courses.subscription');
+    Route::put('/courses/enroll/{course}', 'CourseController@enroll')->name('courses.enroll');
 });

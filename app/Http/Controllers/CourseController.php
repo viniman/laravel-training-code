@@ -104,4 +104,16 @@ class CourseController extends Controller
         $course->delete();
         return redirect()->route('courses.index')->with('success', true);
     }
+
+    /**
+     * Matricular-se no curso
+     *
+     * @param  \App\Course  $course
+     * @return \Illuminate\Http\Response
+     */
+    public function enroll(Course $course)
+    {
+        
+        return redirect()->route('courses.enroll')->with('success', true);
+    }
 }

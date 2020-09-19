@@ -3,24 +3,25 @@
 @section('content')
     @component('admin.components.table')
         @slot('title', 'Listagem de Categorias')
-        @slot('create', route('categories.create'))
+        @can('create', Auth::user())
+            @slot('create', route('categories.create'))
+        @endcan
         @slot('head')
             <th>Nome</th>
             <th></th>
         @endslot
         @slot('body')
             @foreach($categories as $category)
-                
                     <tr>
                         <td>{{ $category->name }}</td>
                         <td class="options"> 
-                            @can('update', $category)
+                            @can('update', Auth::user())
                                 <a href="{{ route('categories.edit', $category->id ) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
                             @endcan
-                            @can('view', $category)
+                            @can('view', Auth::user())
                                 <a href="{{ route('categories.show', $category->id ) }}" class="btn btn-dark"><i class="fas fa-search"></i></a>
                             @endcan
-                            @can('delete', $category)
+                            @can('delete', Auth::user())
                                 <form action="{{ route('categories.destroy', $category->id) }}" class="form-delete" method="post">
                                     @csrf
                                     @method('delete')
@@ -29,7 +30,6 @@
                             @endcan
                         </td>
                     </tr>
-                
             @endforeach
         @endslot
     @endcomponent

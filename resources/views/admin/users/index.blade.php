@@ -3,7 +3,9 @@
 @section('content')
     @component('admin.components.table')
         @slot('title', 'Listagem de usuários')
-        @slot('create', route('users.create'))
+        @can('create', Auth::user())
+            @slot('create', route('users.create'))
+        @endcan
         @slot('head')
             <th>Nome</th>
             <th>E-mail</th>
@@ -16,13 +18,13 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td class="options"> 
-                            @can('update',$user)
+                            @can('updateOwnUser', $user)
                                 <a href="{{ route('users.edit', $user->id ) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
                             @endcan
-                            @can('view',$user)
+                            @can('view', $user)
                                 <a href="{{ route('users.show', $user->id ) }}" class="btn btn-dark"><i class="fas fa-search"></i></a>
                             @endcan
-                            @can('delete',$user)
+                            @can('delete', $user)
                                 <form action="{{ route('users.destroy', $user->id) }}" class="form-delete" method="post">
                                     @csrf
                                     @method('delete')
