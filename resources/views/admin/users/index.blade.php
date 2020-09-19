@@ -2,7 +2,7 @@
 
 @section('content')
     @component('admin.components.table')
-        @slot('title', 'Listagem')
+        @slot('title', 'Listagem de usuários')
         @slot('create', route('users.create'))
         @slot('head')
             <th>Nome</th>

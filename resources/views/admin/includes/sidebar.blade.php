@@ -1,6 +1,6 @@
 <aside class="main-sidebar elevation-4 sidebar-dark-primary" style="overflow-x: hidden;">
 	<a href="index3.html" class="brand-link">
-		<img src="http://mais.codejunior.com.br/img/logo-fechada.png" alt="AdminLTE Logo"
+		<img src="/img/favicon.png" alt="AdminLTE Logo"
 			class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">Desafio Laravel</span>
 	</a>
@@ -10,7 +10,7 @@
 				<img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">{{ $user->name ?? 'User' }}</a>
+				<a href="#" class="d-block">{{ Auth::user()->name ?? 'User' }}</a>
 			</div>
 			<div class="info align-self-center">
 				<form id="logout-form" method="post" action="{{ route('logout') }}">
@@ -46,7 +46,7 @@
 						class="nav-link {{ Route::is('categories.index') ? 'active' : '' }}">
 						<i class="nav-icon fas fa-folder-open"></i>
 						<p>
-							Categórias
+							Categorias
 						</p>
 					</a>
 				</li>

@@ -27,4 +27,10 @@ class CategoryRequest extends FormRequest
             'name' => 'required|min:3|max:150|string|unique:categories'
         ];
     }
+
+    public function attributes(){
+        return[
+            'name' => 'nome',
+        ];
+    }
 }

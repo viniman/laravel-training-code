@@ -97,4 +97,9 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success', true);
     }
+
+    public function is_admin(User $user)
+    {
+        return $user->is_admin;
+    }
 }

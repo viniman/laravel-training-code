@@ -2,7 +2,7 @@
 
 @section('content')
     @component('admin.components.table')
-        @slot('title', 'Listagem')
+        @slot('title', 'Listagem de cursos')
         @slot('create', route('courses.create'))
         @slot('head')
             <th>Nome</th>
@@ -14,7 +14,7 @@
 
                     <tr>
                         <td>{{ $course->name }}</td>
-                        <td>{{ $course->category }}</td>
+                        <td>{{ $course->category->name }}</td>
                         <td class="options"> 
 
                                 <a href="{{ route('courses.edit', $course->id ) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>

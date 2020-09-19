@@ -40,7 +40,7 @@ class UserPolicy
      */
     public function create(User $user) //create e store
     {
-        return $user->is_admin;
+        return $user->is_admin; // Auth::user()->is_admin;
     }
 
     /**

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\User;
 use App\Course;
 use App\Http\Requests\CourseRequest;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -55,12 +54,13 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        $video_link = $course->video;
-        if(Str::contains($course->video, ['https://www.youtube.com/watch?v='])){
-            $videoID = Str::between($course->video, 'watch?v=', '&list');
-            $video_link = 'https://www.youtube.com/embed/' . $videoID;
+        $video_link = $course->video_link;
+
+        if(Str::contains($course->video_link, ['https://www.youtube.com/watch?v='])){
+            $youtube_video_id = Str::between($course->video, 'watch?v=', '&');
+            $video_link = 'https://www.youtube.com/embed/' . $youtube_video_id;
         }
-        
+
         $categories = Category::all();
         return view('admin.courses.show', compact('course','categories' ,'video_link'));
     }

@@ -4,8 +4,8 @@
     @component('admin.components.show')
         @slot('title', $user->name)
         @slot('form')
-            <div class=" float-left col-4 d-inline-block align-top">                
-                <img class="img-fluid border"  src="{{ asset('storage/img/' . $course->image_link ) }}" >
+            <div class=" float-left col-4 d-inline-block align-top">
+                <img class="img-fluid border"  src="{{ asset('storage/img/' . $course->image_path ) }}" >
             </div>
             <ul class="list-group-flush float-right col-8 d-inline-block align-top">
                 <li class="list-group-item">
