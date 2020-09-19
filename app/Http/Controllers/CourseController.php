@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\User;
 use App\Course;
+use App\Http\Requests\CourseRequest;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -30,6 +31,7 @@ class CourseController extends Controller
         $course = new Course();
 
         $categories = Category::all();
+
         return view('admin.courses.create', compact('course', 'categories'));
     }
 
@@ -39,7 +41,7 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
         Course::create($request->except('confirm_password'));
         return redirect()->route('courses.index')->with('success', true);
@@ -83,7 +85,7 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(CourseRequest $request, Course $course)
     {
         //Storage::delete('/public/img/' . $course->image_link);
         //$course->update($this->makeImage($request));

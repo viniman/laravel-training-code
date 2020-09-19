@@ -10,8 +10,8 @@ class Course extends Model
         'name',
         'description',
         'slug',
-        'img_link',
-        'video',
+        'image_path',
+        'video_link',
         'category_id'
     ];
 

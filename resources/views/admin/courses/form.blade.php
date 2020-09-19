@@ -28,6 +28,15 @@
 
 
 @push('scripts')
+    <!-- include libraries(jQuery, bootstrap) required from summernote -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
     <script>
         $(function(){
             $('.select2').select2();
@@ -39,7 +48,7 @@
                 $('textarea').summernote({
                     placeholder: 'Digite a descrição',
                     tabsize: 2,
-                    height: 120,
+                    height: 200,
                     toolbar: [
                         ['style', ['style']],
                         ['font', ['bold', 'underline', 'clear']],

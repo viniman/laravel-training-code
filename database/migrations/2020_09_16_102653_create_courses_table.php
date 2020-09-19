@@ -18,8 +18,8 @@ class CreateCoursesTable extends Migration
             $table->string('name')->unique();
             $table->string('description');
             $table->string('slug');
-            $table->string('image')->nullable();
-            $table->string('video')->nullable();
+            $table->string('image_path')->nullable();
+            $table->string('video_link')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
