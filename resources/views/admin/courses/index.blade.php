@@ -6,10 +6,6 @@
         @slot('create', route('courses.create'))
         @slot('head')
             <th>Nome</th>
-            <th>Descrição</th>
-            <th>Slug</th>
-            <th>Imagem</th>
-            <th>Vídeo</th>
             <th>Categoria</th>
             <th></th>
         @endslot
@@ -18,10 +14,6 @@
 
                     <tr>
                         <td>{{ $course->name }}</td>
-                        <td>{{ $course->description }}</td>
-                        <td>{{ $course->slug }}</td>
-                        <td>{{ $course->image }}</td>
-                        <td>{{ $course->video }}</td>
                         <td>{{ $course->category }}</td>
                         <td class="options"> 
 
