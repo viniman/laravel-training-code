@@ -15,7 +15,7 @@
         @endslot
         @slot('body')
             @foreach($courses as $course)
-                @can('view', $course)
+
                     <tr>
                         <td>{{ $course->name }}</td>
                         <td>{{ $course->description }}</td>
@@ -24,22 +24,22 @@
                         <td>{{ $course->video }}</td>
                         <td>{{ $course->category }}</td>
                         <td class="options"> 
-                            @can('update', $course)
-                                <a href="{{ route('users.edit', $course->id ) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
-                            @endcan
-                            @can('view', $course)
-                                <a href="{{ route('users.show', $course->id ) }}" class="btn btn-dark"><i class="fas fa-search"></i></a>
-                            @endcan
-                            @can('delete', $course)
-                                <form action="{{ route('users.destroy', $course->id) }}" class="form-delete" method="post">
+
+                                <a href="{{ route('courses.edit', $course->id ) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
+
+
+                                <a href="{{ route('courses.show', $course->id ) }}" class="btn btn-dark"><i class="fas fa-search"></i></a>
+
+
+                                <form action="{{ route('courses.destroy', $course->id) }}" class="form-delete" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
-                            @endcan
+
                         </td>
                     </tr>
-                @endcan
+
             @endforeach
         @endslot
     @endcomponent

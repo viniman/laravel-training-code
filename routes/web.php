@@ -22,6 +22,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/users','UserController');
     Route::resource('/categories', 'CategoryController');
-    Route::resource('/courses', 'CategoryController');
-    Route::put('/courses/subscription/{course}', 'CourseController@subscription')->name('courses.subscription');
+    Route::resource('/courses', 'CourseController');
+    //Route::put('/courses/subscription/{course}', 'CourseController@subscription')->name('courses.subscription');
 });

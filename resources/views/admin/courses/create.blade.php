@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 @section('content')
     @component('admin.components.create')
-        @slot('title', 'Cadastrar um usuário')
-        @slot('url', route('users.store'))
+        @slot('title', 'Cadastro de Curso')
+        @slot('url', route('courses.store'))
         @slot('form')
-            @include('admin.users.form')
+            @include('admin.courses.form')
         @endslot
     @endcomponent
 @endsection

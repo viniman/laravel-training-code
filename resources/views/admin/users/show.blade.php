@@ -11,6 +11,6 @@
 
 @push('scripts')
     <script>
-        $('.form-control').attr('readonly',true);
+        $('.form-control').attr('readonly', true);
     </script>
 @endpush

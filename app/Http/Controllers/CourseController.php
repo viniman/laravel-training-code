@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\User;
 use App\Course;
 use Illuminate\Http\Request;
 
@@ -26,7 +28,9 @@ class CourseController extends Controller
     public function create()
     {
         $course = new Course();
-        return view('admin.courses.create', compact('course'));
+
+        $categories = Category::all();
+        return view('admin.courses.create', compact('course', 'categories'));
     }
 
     /**
@@ -49,7 +53,14 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return view('admin.courses.show',compact('course'));
+        $video_link = $course->video;
+        if(Str::contains($course->video, ['https://www.youtube.com/watch?v='])){
+            $videoID = Str::between($course->video, 'watch?v=', '&list');
+            $video_link = 'https://www.youtube.com/embed/' . $videoID;
+        }
+        
+        $categories = Category::all();
+        return view('admin.courses.show', compact('course','categories' ,'video_link'));
     }
 
     /**
@@ -60,7 +71,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('admin.courses.edit', compact('course'));
+        $categories = Category::all();
+
+        return view('admin.courses.edit', compact('course', 'categories'));
     }
 
     /**
@@ -72,12 +85,9 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        if($request->password){
-            $course->update($request->all());
+        //Storage::delete('/public/img/' . $course->image_link);
+        //$course->update($this->makeImage($request));
 
-        }else{
-            $course->update($request->except('password'));
-        }
         return redirect()->route('courses.index')->with('success', true);
     }
 

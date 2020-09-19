@@ -1,39 +1,55 @@
 <div class="row">
-    <div class="form-group col-12">
+    <div class="form-group col-6">
         <label for="name" class="required">Nome </label>
-        <input type="text" name="name" id="name" required class="form-control" autofocus value="{{ old('name', $user->name )}}">
+        <input type="text" name="name" id="name" required class="form-control" autofocus value="{{ old('name', $course->name )}}">
     </div>
-        <div class="form-group col-12">
-            <label for="is_admin" class="required" >Nível de Usuário </label>
-            <select name="is_admin" id="is_admin" class="form-control select2" value="{{ old('is_admin', $user->is_admin) }}">
-                <option value="0">Usuário</option>
-                <option value="1">Administrador</option>
-            </select>
-        </div>
-    <div class="form-group col-12">
-        <label for="email" class="required">E-mail </label>
-        <input type="email" name="email" id="email" autocomplete="off" required class="form-control" value="{{ old('email', $user->email )}}">
+    <div class="form-group col-6">
+        <label for="video" class="required">Link do video </label>
+        <input type="url" name="video" id="video" autocomplete="off" required class="form-control" value="{{ old('video', $course->video )}}">
     </div>
-    
-    @if(!isset($show))
-        @if(Route::is('users.edit'))
-            <div class="form-group col-12">
-                <label for="password">Senha </label>
-                <input type="password" autocomplete="password" name="password"  id="password"  class="form-control" >
-            </div>
-            <div class="form-group col-12">
-                <label for="confirm_password">Confirme sua senha </label>
-                <input type="password" name="confirm_password" autocomplete="password" id="password" class="form-control">
-            </div>
-        @else
-            <div class="form-group col-12">
-                <label for="password" class="required">Senha </label>
-                <input type="password" name="password"  id="password" required class="form-control" >
-            </div>
-            <div class="form-group col-12">
-                <label for="confirm_password" class="required">Confirme sua senha </label>
-                <input type="password" name="confirm_password" id="password" required class="form-control">
-            </div>
-        @endif
-    @endif
+    <div class="form-group col-6">
+        <label for="category_id" class="required" >Categoria</label>
+        <select name="category_id" id="category_id" class="form-control select2" value="{{ old('category_id', $course->category_id) }}">
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}"  class="select2">{{ $category->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group col-6">  
+        <label for="image_link">Imagem </label>
+        <input type="file" accept="image/*" class="form-control-file" name="image_link">
+    </div>
+    <div class="form-group col-sm-12 col-md-12" >
+        <label for="description" class="required">Descrição: </label>
+        <textarea type="text" name="description" id="description" class="form-control" rows="6" required value="{{ old('description', $course->description) }}">{{ old('description', $course->description) }}</textarea>
+    </div>
 </div>
+
+
+
+@push('scripts')
+    <script>
+        $(function(){
+            $('.select2').select2();
+        })
+        $('select[value]').each(function(){
+            $(this).val($(this).attr('value'));
+        })
+        $(document).ready(function() {
+                $('textarea').summernote({
+                    placeholder: 'Digite a descrição',
+                    tabsize: 2,
+                    height: 120,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                    ]
+                });
+            });
+    </script>
+@endpush
