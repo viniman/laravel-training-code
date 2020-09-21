@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,12 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function(){
-    Route::get('/', function () {
-        return view('admin.layouts.app');
+    //Route::get('/', function () {
+     //   return view('admin.layouts.app');
 
-    })->name('dashboard');
-    Route::get('/home', 'HomeController@index')->name('home');
+    //})->name('dashboard');
+    Route::resource('/', 'DashboardController');
+    Route::get('/home', 'HomeController@index');
     Route::resource('/users','UserController');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/courses', 'CourseController');
